@@ -7,16 +7,18 @@ import { Button } from "react-bootstrap"
 import styles from "./EstudiantesScreen.module.css"
 
 export const EstudiantesScreen = () => {
-
+    //array de los cursos
     const [cursos, setCursos] = useState<ICurso[]>([])
     const {search} = useLocation()
     const navigate = useNavigate()
     const query = new URLSearchParams(search)
+    //obtiene el id del query param
     const cursoId = query.get("cursoId")
 
     //curso del query param
     const [selectedCurso, setSelectedCurso] = useState<ICurso | null>(null)
 
+    //al hacer click se navega a la vista de cursos
     const handleReturnScreen = () => {
         navigate("/")
     }
@@ -57,6 +59,7 @@ export const EstudiantesScreen = () => {
         <h2>Nombre del Curso: {selectedCurso?.nombre}</h2>
         <div className={styles.studentsContainer}>
 
+            
             {selectedCurso?.estudiantes.map((estudiante) => (
                 <EstudianteCard key={estudiante.id} estudiante={estudiante}></EstudianteCard>
             ))}

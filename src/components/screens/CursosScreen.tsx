@@ -5,6 +5,7 @@ import { CursoCard } from "../ui/CursoCard"
 import styles from "./CursosScreen.module.css"
 
 export const CursosScreen = () => {
+  //array de los cursos
     const [cursos, setCursos] = useState<ICurso[]>([])
     
     useEffect(()=> {
@@ -21,6 +22,7 @@ export const CursosScreen = () => {
       
       return (
     <div>
+
       <div className={styles.headerCursosScreen}>
         <h1>Crusos Screen</h1>
       </div>
