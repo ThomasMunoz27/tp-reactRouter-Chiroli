@@ -13,7 +13,7 @@ Este proyecto fue desarrollado como parte de la materia **Metodología de Sistem
 
 - React
 - React Router DOM
-- Vite (opcional)
+- Vite 
 - JavaScript
 - CSS
 
