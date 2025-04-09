@@ -36,9 +36,14 @@ export const EstudiantesScreen = () => {
             
           }, [])
 
-    useEffect(() => {
-        setSelectedCurso(cursos.find((curso) => curso.id === Number(cursoId)) ?? null)
-    }, [cursoId, cursos])
+     useEffect(() => {
+        if (cursos.length === 0 || !cursoId) return
+            
+        const foundCurso = cursos.find((curso) => curso.id == Number(cursoId))
+        setSelectedCurso(foundCurso ?? null)
+        }, [cursoId, cursos])
+
+
     //si no existe un query param devuelve un mensaje
     if(!cursoId){
         return (
@@ -59,7 +64,7 @@ export const EstudiantesScreen = () => {
         <h2>Nombre del Curso: {selectedCurso?.nombre}</h2>
         <div className={styles.studentsContainer}>
 
-            
+
             {selectedCurso?.estudiantes.map((estudiante) => (
                 <EstudianteCard key={estudiante.id} estudiante={estudiante}></EstudianteCard>
             ))}
