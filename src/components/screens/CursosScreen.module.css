@@ -1,0 +1,16 @@
+.headerCursosScreen{
+    width: 100%;
+    height: 50px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: blanchedalmond;
+}
+
+.cursosContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 8px;
+}
