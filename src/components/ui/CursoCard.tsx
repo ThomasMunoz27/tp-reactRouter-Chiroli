@@ -12,7 +12,7 @@ export const CursoCard: FC<ICursoCard> = ({curso}) => {
 
   //al hacer click se navega a la vista de estudiantes con el id del curso en el query param
   const handleClick = () => {
-    navigate(`/estudiantes?cursoId=${curso.id}`);
+    navigate(`/estudiantes/${curso.id}`);
   }
 
   return (

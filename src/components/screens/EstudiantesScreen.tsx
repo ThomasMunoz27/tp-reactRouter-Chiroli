@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { getAllCursos } from "../../http/api"
 import { ICurso } from "../../types/ICurso"
 import { EstudianteCard } from "../ui/EstudianteCard"
@@ -9,19 +9,16 @@ import styles from "./EstudiantesScreen.module.css"
 export const EstudiantesScreen = () => {
     //array de los cursos
     const [cursos, setCursos] = useState<ICurso[]>([])
-    const {search} = useLocation()
-    const navigate = useNavigate()
-    const query = new URLSearchParams(search)
     //obtiene el id del query param
-    const cursoId = query.get("cursoId")
+    const { cursoid } = useParams()
+    
+    
 
     //curso del query param
     const [selectedCurso, setSelectedCurso] = useState<ICurso | null>(null)
 
     //al hacer click se navega a la vista de cursos
-    const handleReturnScreen = () => {
-        navigate("/")
-    }
+    
 
 
     useEffect(()=> {
@@ -37,15 +34,15 @@ export const EstudiantesScreen = () => {
           }, [])
 
      useEffect(() => {
-        if (cursos.length === 0 || !cursoId) return
+        if (cursos.length === 0) return
             
-        const foundCurso = cursos.find((curso) => curso.id == Number(cursoId))
+        const foundCurso = cursos.find((curso) => curso.id == Number(cursoid))
         setSelectedCurso(foundCurso ?? null)
-        }, [cursoId, cursos])
+        }, [cursoid, cursos])
 
 
     //si no existe un query param devuelve un mensaje
-    if(!cursoId){
+    if(!cursoid){
         return (
         <>
             <h2>No se ha seleccionado un curso</h2>
@@ -57,7 +54,8 @@ export const EstudiantesScreen = () => {
   return (
     <div>
         <div className={styles.headerScreenStudents}>
-            <Button onClick={handleReturnScreen}>Volver</Button>
+            <Link to={"/"} ><Button >Volver</Button></Link>
+            
             <h1>Estudiantes Screen</h1>
 
         </div>

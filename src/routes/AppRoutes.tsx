@@ -7,7 +7,7 @@ export const AppRoutes = () => {
     <>
     <Routes>
         <Route path="/" element= {<CursosScreen/>}></Route>
-        <Route path="/estudiantes" element= {<EstudiantesScreen/>}></Route>
+        <Route path="/estudiantes/:cursoid" element= {<EstudiantesScreen/>}></Route>
     </Routes>
     </>
   )
